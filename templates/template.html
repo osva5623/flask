@@ -1,0 +1,23 @@
+{%extends 'bootstrap/base.html'%}
+
+{%block head%}
+    {{super()}}
+    <title>
+        {%block tittle%}
+            Platzi
+        {%endblock%}
+    </title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/estilos.css')}}">
+
+{%endblock%}
+
+
+{%block body%}
+    {%block navbar%}
+        {%include 'navbar.html'%}
+
+    {%endblock%}
+    
+    {%block container%}
+    {%endblock%}
+{%endblock%}
