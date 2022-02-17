@@ -1,5 +1,6 @@
 {%extends 'template.html'%}
 {%import 'macros.html' as macros%}
+{%import 'bootstrap/wtf.html' as wtf%}
 {%block tittle%}
     {{super()}}
      Bienvenido
@@ -9,6 +10,9 @@
     {%if user_ip%}
         <h1>Esta es su ip {{user_ip}}</h1>
         <br>
+        <div class="container">
+            {{wtf.quick_form(login_form)}}
+        </div>
         {%for todo in todos%}
         {{macros.render_todo(todo)}}
         {%endfor%}
