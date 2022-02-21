@@ -7,8 +7,11 @@
 {%endblock%}
 
 {%block container%}
+    {%if user_name%}
+        <h1>Bienvenido {{user_name | capitalize}}</h1>
+    {%endif%}
     {%if user_ip%}
-        <h1>Esta es su ip {{user_ip}}</h1>
+        <h3>Esta es su ip {{user_ip}}</h3>
         <br>
         <div class="container">
             {{wtf.quick_form(login_form)}}
