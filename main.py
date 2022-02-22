@@ -1,18 +1,16 @@
-from flask import Flask,request,make_response,redirect,render_template,session,url_for,flash
-from flask_bootstrap import Bootstrap
-from flask_wtf import FlaskForm
-from wtforms.fields import StringField,PasswordField,SubmitField
-from wtforms.validators import DataRequired
+from flask import request,make_response,redirect,render_template,session,url_for,flash
+import unittest
+from app import create_app
+from app.forms import LoginForm
 
-app=Flask(__name__)
-bootstrap=Bootstrap(app)
+app= create_app()
 todos=['1','2','3']
-app.config['SECRET_KEY']='SUPER SECRETO'
 
-class LoginForm(FlaskForm):
-    user_name=StringField('Nombre de usuario',validators=[DataRequired()])
-    password=PasswordField('Contraseña', validators=[DataRequired()])
-    submit=SubmitField('Enviar')
+
+@app.cli.command()
+def test():
+    tests = unittest.TestLoader().discover('tests')
+    unittest.TextTestRunner().run(tests)
 
 @app.errorhandler(404)
 def not_found(error):
